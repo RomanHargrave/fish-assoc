@@ -1,0 +1,2 @@
+* Support passing flags to `assoc.set` for initial call to `set` builtin (e.g. `-g`, `-x`, and `-U`)
+* Keep scope shadowing; or drop the ability to pass flags to `set` builtin and assume the list in use is global
