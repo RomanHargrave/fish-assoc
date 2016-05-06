@@ -18,7 +18,7 @@ end
 function -S assoc.has_key -a varspec 
     assoc._parsename $varspec; or return $status
 
-    contains -i $_map_key (eval string replace -ra $__assoc_US.+ "''" '$'$_map_varname) #replace all following __assoc_US in each element to show only keys
+    contains -i $_map_key (string replace -ra $__assoc_US.+ '' $$_map_varname) #replace all following __assoc_US in each element to show only keys
 end
 
 # Remove where key matches
@@ -43,7 +43,7 @@ function -S assoc.set -a varspec -a value
             return 0
         end
     else
-        eval set $_map_varname '$'$_map_varname $_map_key$__assoc_US$value
+        set $_map_varname $$_map_varname $_map_key$__assoc_US$value
         return 0
     end
 end
@@ -60,3 +60,6 @@ function -S assoc.get -a varspec
     end
 end
 
+function -S assoc.serialize -a varname
+    printf '%s\n' $$varname
+end
